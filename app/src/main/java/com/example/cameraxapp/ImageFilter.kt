@@ -29,8 +29,10 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import java.io.File
@@ -48,6 +50,13 @@ class ImageFilter : AppCompatActivity() {
   private lateinit var viewBinding: ActivityImageFilterBinding
   private var original: Mat? = null
   private var result: Mat? = null
+
+  private lateinit var org:View
+  private lateinit var ai:View
+  private lateinit var bw:View
+  private lateinit var grey:View
+  private lateinit var soft:View
+
   var enhancedImageType:String =""
   @SuppressLint("WrongThread")
   @RequiresApi(Build.VERSION_CODES.P)
@@ -57,6 +66,14 @@ class ImageFilter : AppCompatActivity() {
     setContentView(viewBinding.root)
     supportActionBar?.hide()
 
+    org = findViewById(R.id.viewOrg)
+    ai = findViewById(R.id.viewAI)
+    bw = findViewById(R.id.viewBW)
+    grey = findViewById(R.id.viewGrey)
+    soft = findViewById(R.id.viewSoft)
+
+    bw.isVisible = true
+
     window.setFlags(
       WindowManager.LayoutParams.FLAG_SECURE,
       WindowManager.LayoutParams.FLAG_SECURE
@@ -64,8 +81,16 @@ class ImageFilter : AppCompatActivity() {
 
     //deleteInternalStorageDirectoryy()
     viewBinding.aiFilterImgBtn.setOnClickListener {
+      ai.isVisible = true
+
+      bw.isVisible = false
+      org.isVisible = false
+      grey.isVisible = false
+      soft.isVisible = false
       viewBinding.aiFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
+
+
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.blackAndWhiteFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.greyFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -75,8 +100,15 @@ class ImageFilter : AppCompatActivity() {
       aiFilter()
     }
     viewBinding.greyFilterImgBtn.setOnClickListener {
+      grey.isVisible = true
+
+      bw.isVisible = false
+      org.isVisible = false
+      ai.isVisible = false
+      soft.isVisible = false
       viewBinding.greyFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
+
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.blackAndWhiteFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.aiFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -85,8 +117,15 @@ class ImageFilter : AppCompatActivity() {
       greyFilter()
     }
     viewBinding.softFilterImgBtn.setOnClickListener {
+      soft.isVisible = true
+
+      bw.isVisible = false
+      org.isVisible = false
+      grey.isVisible = false
+      ai.isVisible = false
       viewBinding.softFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
+
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.blackAndWhiteFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.aiFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -95,8 +134,15 @@ class ImageFilter : AppCompatActivity() {
       softFilter()
     }
     viewBinding.blackAndWhiteFilterImgBtn.setOnClickListener {
+      bw.isVisible = true
+
+      ai.isVisible = false
+      org.isVisible = false
+      grey.isVisible = false
+      soft.isVisible = false
       viewBinding.blackAndWhiteFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
+
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.aiFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.greyFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -150,8 +196,16 @@ class ImageFilter : AppCompatActivity() {
 //      doSoftFilter()
 //    }
     viewBinding.originalFilterImgBtn.setOnClickListener {
+      org.isVisible = true
+
+      bw.isVisible = false
+      ai.isVisible = false
+      grey.isVisible = false
+      soft.isVisible = false
       viewBinding.originalFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
+
+     // org.isVisible = true
 //      viewBinding.greyFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.blackAndWhiteFilterImageView.setImageResource(R.drawable.ic_no_picture)
 //      viewBinding.aiFilterImageView.setImageResource(R.drawable.ic_no_picture)

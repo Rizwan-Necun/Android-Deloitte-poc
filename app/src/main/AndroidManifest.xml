@@ -29,7 +29,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/deloitte_logo"
-        android:label="Deloitte POC"
+        android:label="Deloitte"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/deloitte_logo"
         android:supportsRtl="true"
