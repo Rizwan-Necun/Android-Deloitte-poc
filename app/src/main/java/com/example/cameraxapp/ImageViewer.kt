@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -39,6 +40,12 @@ class ImageViewer : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     viewBinding = ActivityImageViewerBinding.inflate(layoutInflater)
     setContentView(viewBinding.root)
+
+    window.setFlags(
+      WindowManager.LayoutParams.FLAG_SECURE,
+      WindowManager.LayoutParams.FLAG_SECURE
+    )
+    supportActionBar?.hide()
 
       viewBinding.warpButton.setOnClickListener {
         deleteInternalStorageDirectoryy()

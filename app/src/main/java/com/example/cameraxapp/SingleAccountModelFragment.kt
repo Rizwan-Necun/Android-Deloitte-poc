@@ -45,6 +45,12 @@ class SingleAccountModeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        val sharedPreference =  this@SingleAccountModeFragment.requireActivity().getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
+//        if(!sharedPreference.equals("defaultName")){
+//            val intent = Intent(requireActivity(),MainActivity::class.java)
+//            startActivity(intent)
+//        }
         // Inflate the layout for this fragment
 
         // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -93,6 +99,8 @@ class SingleAccountModeFragment : Fragment() {
 
 
         })
+
+        binding.noteAiText.alpha = 0.7f
 
         binding.btnRemoveAccount.setOnClickListener(View.OnClickListener {
 

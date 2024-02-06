@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -19,8 +20,18 @@ class EmailPopUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityEmailPopUpBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
+
+        supportActionBar?.hide()
         val sharedPreference =  getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
         val userEmailId= sharedPreference.getString("userEmailId","defaultName")
+
+        viewBinding.emailId.alpha = 0.6f
+
         viewBinding.emailId.text = userEmailId.toString()
         viewBinding.cameraButton.setOnClickListener{
             deleteInternalStorageDirectoryy()
@@ -39,6 +50,8 @@ class EmailPopUpActivity : AppCompatActivity() {
         // Optional: if you want to finish the current activity
         finish()
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

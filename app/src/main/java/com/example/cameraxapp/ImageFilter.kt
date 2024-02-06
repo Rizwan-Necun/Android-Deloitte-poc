@@ -26,6 +26,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.os.Environment
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -54,6 +55,12 @@ class ImageFilter : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     viewBinding = ActivityImageFilterBinding.inflate(layoutInflater)
     setContentView(viewBinding.root)
+    supportActionBar?.hide()
+
+    window.setFlags(
+      WindowManager.LayoutParams.FLAG_SECURE,
+      WindowManager.LayoutParams.FLAG_SECURE
+    )
 
     //deleteInternalStorageDirectoryy()
     viewBinding.aiFilterImgBtn.setOnClickListener {
@@ -208,7 +215,7 @@ class ImageFilter : AppCompatActivity() {
     Utils.matToBitmap(mat, resultBitmap)
 
     doSaveGetSave()
-    softFilter()
+    blackAndWhiteFilter()
 
    //doSaveGetSave()
    // doNoFilter()
@@ -248,7 +255,7 @@ class ImageFilter : AppCompatActivity() {
        if(b != null){
          enhancedImageType = "ai_filter_image"
          viewBinding.aiFilterProgressbar.visibility = View.GONE
-         viewBinding.aiFilterImageView.setImageBitmap(b)
+         //viewBinding.aiFilterImageView.setImageBitmap(b)
          viewBinding.imageView2.setImageBitmap(b)
        }
     else{
@@ -281,13 +288,13 @@ class ImageFilter : AppCompatActivity() {
     if(b != null){
       enhancedImageType = "grey_filter_image"
       viewBinding.imageView2.setImageBitmap(b)
-      viewBinding.greyFilterImageView.setImageBitmap(b)
+      //viewBinding.greyFilterImageView.setImageBitmap(b)
       viewBinding.greyFilterProgressbar.visibility = View.GONE
 
 
     }else{
       viewBinding.greyFilterProgressbar.visibility = View.VISIBLE
-      viewBinding.greyFilterImageView.setImageResource(R.drawable.ic_no_picture)
+      //viewBinding.greyFilterImageView.setImageResource(R.drawable.ic_no_picture)
     }
 
   }
@@ -316,7 +323,7 @@ class ImageFilter : AppCompatActivity() {
           if(b != null) {
             enhancedImageType = "soft_filter_image"
             viewBinding.imageView2.setImageBitmap(b)
-               viewBinding.softFilterImageView.setImageBitmap(b)
+              // viewBinding.softFilterImageView.setImageBitmap(b)
             viewBinding.softFilterProgressbar.visibility = View.GONE
           }else{
             viewBinding.softFilterImageView.setImageResource(R.drawable.ic_no_picture);
@@ -348,7 +355,7 @@ class ImageFilter : AppCompatActivity() {
     if(b != null){
       enhancedImageType = "black_and_white_filter_image"
       viewBinding.imageView2.setImageBitmap(b)
-      viewBinding.blackAndWhiteFilterImageView.setImageBitmap(b)
+      //viewBinding.blackAndWhiteFilterImageView.setImageBitmap(b)
       viewBinding.blackAndWhiteFilterProgressbar.visibility = View.GONE
 
 
@@ -426,7 +433,7 @@ class ImageFilter : AppCompatActivity() {
     if(resultBitmap != null){
       enhancedImageType = "no_filter_image"
       viewBinding.imageView2.setImageBitmap(resultBitmap)
-      viewBinding.originalFilterImageView.setImageBitmap(resultBitmap)
+    //  viewBinding.originalFilterImageView.setImageBitmap(resultBitmap)
       viewBinding.originalFilterProgressbar.visibility = View.GONE
 
 
@@ -484,8 +491,8 @@ class ImageFilter : AppCompatActivity() {
     bitmap.compress(Bitmap.CompressFormat.JPEG, 95, stream)
     stream.close()
     //val msg = "Save succeeded: ${uri.getPath()}"
-    val msg = "Save succeeded"
-    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+    //val msg = "Save succeeded"
+   // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
     println("enhancedImageTypenhancedImageTyp:$enhancedImageType")
 
     val intent=Intent(this@ImageFilter,EmailActivity::class.java)

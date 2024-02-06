@@ -33,9 +33,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="40dp"
             android:layout_marginTop="100dp"
-            android:fontFamily="@font/red_hat_display"
+            android:fontFamily="@font/redhatdisplay_regular"
             android:text="Let's get started"
-            android:textColor="#000000"
+            android:textColor="#3A3A3A"
             android:textSize="18sp" />
 
         <TextView
@@ -46,9 +46,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/outfit_medium"
             android:text="Sign-In with"
-            android:textColor="#058C11"
+            android:textColor="@color/SignIn"
             android:textSize="26sp" />
 
         <!--    <RelativeLayout-->
@@ -109,10 +109,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/redhatdisplay_regular"
                     android:gravity="center"
                     android:text="Microsoft Account"
-                    android:textColor="@color/black"
+                    android:textColor="#212121"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -133,6 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Powered By "
+                android:fontFamily="@font/redhatdisplay_regular"
+                android:layout_marginBottom="20dp"
                 android:textColor="#808080" />
 
             <TextView
@@ -141,7 +143,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/poweredByText"
                 android:text="Re"
-                android:textColor="#00FF00"
+                android:fontFamily="@font/exo_2_bold"
+                android:textColor="@color/SignIn"
                 android:textStyle="bold" />
 
             <TextView
@@ -150,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/reNoteAiText"
                 android:text="NoteAI"
+                android:fontFamily="@font/exo_2_bold"
                 android:textColor="#000000"
                 android:textStyle="bold" />
         </RelativeLayout>

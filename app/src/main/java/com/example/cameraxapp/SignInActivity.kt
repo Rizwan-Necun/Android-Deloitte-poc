@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
+import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.cardview.widget.CardView
@@ -29,6 +30,10 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
         println("34345454543545"+generateBase64EncodedSHA1("78:64:56:63:58:35:DE:34:8C:DB:4A:62:5C:DE:68:BD:DB:6B:07:3E"))
         btnSignIn = findViewById(R.id.btnSignIn)
         rl1= findViewById(R.id.rlOne)

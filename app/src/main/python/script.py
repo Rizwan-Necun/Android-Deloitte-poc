@@ -167,7 +167,8 @@ def ai_filter(image_path,output_dir):
     if not os.path.exists(output_dir):
        os.makedirs(output_dir)
     output_dir=os.path.join(output_dir,"ai_filter_image.jpg")
-    cv2.imwrite(output_dir, img)
+    cv2.imwrite(output_dir, img, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
+
     return img
 
 
@@ -186,8 +187,8 @@ def grey_filter(input_image_path,output_path):
     if not os.path.exists(output_path):
         os.makedirs(output_path)
     output_path = os.path.join(output_path, "grey_filter_image.jpg")
-    #cv2.imwrite(output_path, thresh, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
-    cv2.imwrite(output_path, image)
+    cv2.imwrite(output_path, image, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
+    #cv2.imwrite(output_path, image)
     return image
 
 
@@ -286,9 +287,9 @@ def soft_filter(image_path,output_path):
         os.makedirs(output_path)
 
     output_path=os.path.join(output_path,"soft_filter_image.jpg")
+    cv2.imwrite(output_path, enhanced_img, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
 
 
-    cv2.imwrite(output_path,enhanced_img)
     return enhanced_img
 
 
@@ -307,8 +308,8 @@ def black_and_white_filter(input_image_path,output_path):
         os.makedirs(output_path)
     output_path = os.path.join(output_path, "black_and_white_filter_image.jpg")
     #cv2.imwrite(output_path, thresh, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
-    cv2.imwrite(output_path, dilated)
-
+    #cv2.imwrite(output_path, dilated)
+    cv2.imwrite(output_path, dilated, [int(cv2.IMWRITE_JPEG_QUALITY), 9])
     return dilated
 
 
