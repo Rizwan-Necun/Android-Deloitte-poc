@@ -32,7 +32,7 @@
             android:id="@+id/cameraRetakeImgVw"
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/camera_retake"
             app:layout_constraintEnd_toStartOf="@id/emailImageView"
@@ -42,30 +42,32 @@
 
         <ImageView
             android:id="@+id/emailImageView"
-            android:layout_width="93dp"
-            android:layout_height="93dp"
-            android:layout_marginStart="40dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/email_img"
             app:layout_constraintBottom_toBottomOf="@id/cameraRetakeImgVw"
-            app:layout_constraintEnd_toStartOf="@id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cameraRetakeImgVw"
             app:layout_constraintTop_toTopOf="@id/cameraRetakeImgVw" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="26dp"
-            android:indeterminate="true"
-            android:indeterminateTint="#12AF3A"
-            android:indeterminateTintMode="src_atop"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/emailImageView"
-            app:tint="@color/black" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminate="true"
+        android:indeterminateTint="#12AF3A"
+        android:visibility="gone"
+        android:indeterminateTintMode="src_atop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/black" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

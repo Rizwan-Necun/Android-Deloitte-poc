@@ -198,7 +198,7 @@ class SingleAccountModeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-             checkIfUserIsLoggedIn()
+             //checkIfUserIsLoggedIn()
         initializeUI()
         /**
          * The account may have been removed from the device (if broker is in use).
@@ -304,7 +304,8 @@ class SingleAccountModeFragment : Fragment() {
                 Log.d(TAG, "ID Token: " + authenticationResult.account.claims!!["id_token"])
 
                 /* Update account */
-                updateUI(authenticationResult.account)
+                //updateUI(authenticationResult.account)
+               // startActivity(Intent(requireActivity(),MainActivity::class.java))
 
                 /* call graph */
                 callGraphAPI(authenticationResult)
@@ -375,6 +376,7 @@ class SingleAccountModeFragment : Fragment() {
 val intent = Intent(requireActivity(),MainActivity::class.java)
        // intent.putExtra("userEmailId",userEmailId.toString())
         startActivity(intent)
+        this@SingleAccountModeFragment.requireActivity().finish()
     }
 
     /**

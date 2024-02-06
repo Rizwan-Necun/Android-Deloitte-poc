@@ -181,6 +181,7 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this@MainActivity, signOutText, Toast.LENGTH_SHORT)
             .show()
         val intent = Intent(this@MainActivity, SignInActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 

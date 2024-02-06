@@ -61,14 +61,14 @@ chaquopy {
         version = "3.8"
         buildPython("C:\\Users\\moham\\AppData\\Local\\Programs\\Python\\Python38\\python.exe")
         pip{
-              install("opencv-python")
+              install("opencv-python-headless")
 //            install("pandas")
 //            install("pillow")
 //            install("lib-platform")
 //            install("subprocess.run")
 //            install("imutils")
-            install("numpy")
-            install("scipy")
+            //install("numpy")
+            //install("scipy")
 
         }
         pyc {

@@ -326,8 +326,8 @@ class ImageFilter : AppCompatActivity() {
               // viewBinding.softFilterImageView.setImageBitmap(b)
             viewBinding.softFilterProgressbar.visibility = View.GONE
           }else{
-            viewBinding.softFilterImageView.setImageResource(R.drawable.ic_no_picture);
-           // viewBinding.softFilterProgressbar.visibility= View.VISIBLE
+           // viewBinding.softFilterImageView.setImageResource(R.drawable.ic_no_picture);
+            viewBinding.softFilterProgressbar.visibility= View.VISIBLE
 
           }
   }

@@ -23,7 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="54dp"
-            android:src="@drawable/deloitte_logo" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/textViewLetsGetStarted"

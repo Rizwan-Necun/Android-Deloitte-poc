@@ -135,7 +135,8 @@ class EmailActivity : AppCompatActivity() {
 
     @SuppressLint("SuspiciousIndentation")
     private fun initSendEmail() {
-        viewBinding.progressBar.visibility = View.VISIBLE
+       // viewBinding.progressBar.visibility = View.VISIBLE
+        startActivity(Intent(this@EmailActivity,EmailPopUpActivity::class.java))
         val sharedPreference = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
         val userEmailId = sharedPreference.getString("userEmailId", "defaultName")
         println("userEmailId:$userEmailId")
@@ -182,9 +183,10 @@ class EmailActivity : AppCompatActivity() {
                     val response = response.body()
                     if (response != null) {
 
-                        viewBinding.progressBar.visibility = View.GONE
-                        val intent = Intent(this@EmailActivity, EmailPopUpActivity::class.java)
-                        startActivity(intent)
+                        //viewBinding.progressBar.visibility = View.GONE
+                      //  val intent = Intent(this@EmailActivity, EmailPopUpActivity::class.java)
+                        //startActivity(intent)
+                        deleteInternalStorageDirectoryy()
                         //showSuccessDialog()
 //                            Toast.makeText(
 //                                this@EmailActivity,
@@ -193,28 +195,28 @@ class EmailActivity : AppCompatActivity() {
 //                            ).show()
                     } else {
 
-                        Toast.makeText(
-                            this@EmailActivity,
-                            "please try again after sometime",
-                            Toast.LENGTH_LONG
-                        ).show()
+//                        Toast.makeText(
+//                            this@EmailActivity,
+//                            "please try again after sometime",
+//                            Toast.LENGTH_LONG
+//                        ).show()
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(
-                        this@EmailActivity,
-                        "please try again after sometime",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        this@EmailActivity,
+//                        "please try again after sometime",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                 }
             }
 
 
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
-                Toast.makeText(
-                    this@EmailActivity,
-                    "please try again after sometime",
-                    Toast.LENGTH_LONG
-                ).show()
+//                Toast.makeText(
+//                    this@EmailActivity,
+//                    "please try again after sometime",
+//                    Toast.LENGTH_LONG
+//                ).show()
 
             }
         })

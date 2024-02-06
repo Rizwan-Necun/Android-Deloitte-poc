@@ -33,7 +33,7 @@ class EmailPopUpActivity : AppCompatActivity() {
         viewBinding.emailId.alpha = 0.6f
 
         viewBinding.emailId.text = userEmailId.toString()
-        viewBinding.cameraButton.setOnClickListener{
+        viewBinding.imgTick.setOnClickListener{
             deleteInternalStorageDirectoryy()
             val intent = Intent(this@EmailPopUpActivity,MainActivity::class.java)
             startActivity(intent)
