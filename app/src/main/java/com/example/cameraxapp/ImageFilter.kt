@@ -72,7 +72,7 @@ class ImageFilter : AppCompatActivity() {
     grey = findViewById(R.id.viewGrey)
     soft = findViewById(R.id.viewSoft)
 
-    bw.isVisible = true
+    bw.visibility = View.VISIBLE
 
     window.setFlags(
       WindowManager.LayoutParams.FLAG_SECURE,
@@ -81,13 +81,13 @@ class ImageFilter : AppCompatActivity() {
 
     //deleteInternalStorageDirectoryy()
     viewBinding.aiFilterImgBtn.setOnClickListener {
-      ai.isVisible = true
+      ai.visibility = View.VISIBLE
 
-      bw.isVisible = false
-      org.isVisible = false
-      grey.isVisible = false
-      soft.isVisible = false
-      viewBinding.aiFilterProgressbar.visibility=View.VISIBLE
+      bw.visibility = View.GONE
+      org.visibility = View.GONE
+      grey.visibility = View.GONE
+      soft.visibility = View.GONE
+     // viewBinding.aiFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 
@@ -100,13 +100,13 @@ class ImageFilter : AppCompatActivity() {
       aiFilter()
     }
     viewBinding.greyFilterImgBtn.setOnClickListener {
-      grey.isVisible = true
+      grey.visibility = View.VISIBLE
 
-      bw.isVisible = false
-      org.isVisible = false
-      ai.isVisible = false
-      soft.isVisible = false
-      viewBinding.greyFilterProgressbar.visibility=View.VISIBLE
+      bw.visibility = View.GONE
+      org.visibility = View.GONE
+      ai.visibility = View.GONE
+      soft.visibility = View.GONE
+      //viewBinding.greyFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -117,13 +117,13 @@ class ImageFilter : AppCompatActivity() {
       greyFilter()
     }
     viewBinding.softFilterImgBtn.setOnClickListener {
-      soft.isVisible = true
+      soft.visibility = View.VISIBLE
 
-      bw.isVisible = false
-      org.isVisible = false
-      grey.isVisible = false
-      ai.isVisible = false
-      viewBinding.softFilterProgressbar.visibility=View.VISIBLE
+      bw.visibility = View.GONE
+      org.visibility = View.GONE
+      grey.visibility = View.GONE
+      ai.visibility = View.GONE
+      //viewBinding.softFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -134,13 +134,13 @@ class ImageFilter : AppCompatActivity() {
       softFilter()
     }
     viewBinding.blackAndWhiteFilterImgBtn.setOnClickListener {
-      bw.isVisible = true
+      bw.visibility = View.VISIBLE
 
-      ai.isVisible = false
-      org.isVisible = false
-      grey.isVisible = false
-      soft.isVisible = false
-      viewBinding.blackAndWhiteFilterProgressbar.visibility=View.VISIBLE
+      ai.visibility = View.GONE
+      org.visibility = View.GONE
+      grey.visibility = View.GONE
+      soft.visibility = View.GONE
+     // viewBinding.blackAndWhiteFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -196,13 +196,13 @@ class ImageFilter : AppCompatActivity() {
 //      doSoftFilter()
 //    }
     viewBinding.originalFilterImgBtn.setOnClickListener {
-      org.isVisible = true
+      org.visibility = View.VISIBLE
 
-      bw.isVisible = false
-      ai.isVisible = false
-      grey.isVisible = false
-      soft.isVisible = false
-      viewBinding.originalFilterProgressbar.visibility=View.VISIBLE
+      bw.visibility = View.GONE
+      ai.visibility = View.GONE
+      grey.visibility = View.GONE
+      soft.visibility = View.GONE
+     // viewBinding.originalFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
      // org.isVisible = true
@@ -542,7 +542,9 @@ class ImageFilter : AppCompatActivity() {
     ) ?: throw IOException("Could not open uri")
     val stream =
       contentResolver.openOutputStream(uri) ?: throw IOException("Could not open output stream")
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 95, stream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, -20, stream)
+
+
     stream.close()
     //val msg = "Save succeeded: ${uri.getPath()}"
     //val msg = "Save succeeded"
@@ -587,7 +589,8 @@ class ImageFilter : AppCompatActivity() {
 //    stream.close()
     val stream =
       contentResolver.openOutputStream(uri) ?: throw IOException("Could not open output stream")
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream)
+    //bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
     stream.close()
 //val msg = "Save succeeded: ${uri.getPath()}"
 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()

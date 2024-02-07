@@ -44,6 +44,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import android.provider.Settings
 
 typealias CVAnalyzerListener = () -> Unit
 
@@ -54,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
     private var mSingleAccountApp: ISingleAccountPublicClientApplication? = null
     private var imageCapture: ImageCapture? = null
+
+    private val CAMERA_PERMISSION_REQUEST_CODE = 100
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
@@ -177,12 +180,12 @@ class MainActivity : AppCompatActivity() {
         val editor = preferences.edit()
         editor.clear()
         editor.apply()
-        finish()
         Toast.makeText(this@MainActivity, signOutText, Toast.LENGTH_SHORT)
             .show()
         val intent = Intent(this@MainActivity, SignInActivity::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+        finishAffinity()
     }
 
     private fun takePhoto() {
@@ -328,14 +331,43 @@ class MainActivity : AppCompatActivity() {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(
-                    this,
-                    "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this,
+//                    "Permissions not granted by the user.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+                showPermissionDialog()
                 //finish()
             }
         }
+    }
+
+    private fun showPermissionDialog(){
+        val permissionDialog = Dialog(this@MainActivity)
+        permissionDialog.setContentView(R.layout.permission_diaog)
+        permissionDialog.setCancelable(false)
+        permissionDialog.setCanceledOnTouchOutside(false)
+        permissionDialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+
+        permissionDialog.findViewById<CardView>(R.id.btnCancel).setOnClickListener {
+            permissionDialog.dismiss()
+        }
+
+        permissionDialog.findViewById<CardView>(R.id.btnOk).setOnClickListener {
+            openAppPermissionSettings()
+            permissionDialog.dismiss()
+        }
+
+        permissionDialog.show()
+    }
+
+    fun openAppPermissionSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            val uri = Uri.fromParts("package", packageName, null)
+            data = uri
+        }
+        startActivity(intent)
+        recreate()
     }
 
 
@@ -346,8 +378,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this@MainActivity, SignInActivity::class.java)
-        startActivity(intent)
+        moveTaskToBack(true)
+       // val intent = Intent(this@MainActivity, SignInActivity::class.java)
+        //startActivity(intent)
     }
 
     override fun onResume() {
@@ -359,6 +392,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "OpenCV library found inside package. Using it!")
         }
     }
+
 
     private inner class CVAnalyzer(private val listener: CVAnalyzerListener) :
         ImageAnalysis.Analyzer {

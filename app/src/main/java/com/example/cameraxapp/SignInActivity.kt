@@ -99,5 +99,19 @@ class SignInActivity : AppCompatActivity() {
         // Base64 encode the SHA1 hash
         return Base64.encodeToString(sha1Digest, Base64.NO_WRAP)
     }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed()
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        finish()
+//        return true
+//    }
+//
+//    override fun onBackPressed() {
+//        // Start MainActivity
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        // Optional: if you want to finish the current activity
+//        finish()
+//    }
 }
 
