@@ -87,7 +87,7 @@ class ImageFilter : AppCompatActivity() {
       org.visibility = View.GONE
       grey.visibility = View.GONE
       soft.visibility = View.GONE
-     // viewBinding.aiFilterProgressbar.visibility=View.VISIBLE
+      viewBinding.aiFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 
@@ -140,7 +140,7 @@ class ImageFilter : AppCompatActivity() {
       org.visibility = View.GONE
       grey.visibility = View.GONE
       soft.visibility = View.GONE
-     // viewBinding.blackAndWhiteFilterProgressbar.visibility=View.VISIBLE
+      viewBinding.blackAndWhiteFilterProgressbar.visibility=View.VISIBLE
       deleteInternalStorageDirectoryy()
 
 //      viewBinding.originalFilterImageView.setImageResource(R.drawable.ic_no_picture)
@@ -542,7 +542,7 @@ class ImageFilter : AppCompatActivity() {
     ) ?: throw IOException("Could not open uri")
     val stream =
       contentResolver.openOutputStream(uri) ?: throw IOException("Could not open output stream")
-    bitmap.compress(Bitmap.CompressFormat.JPEG, -20, stream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream)
 
 
     stream.close()
@@ -678,7 +678,7 @@ class ImageFilter : AppCompatActivity() {
     startActivity(intent)
 
     // Optional: if you want to finish the current activity
-    finish()
+    finishAffinity()
   }
 
   companion object {

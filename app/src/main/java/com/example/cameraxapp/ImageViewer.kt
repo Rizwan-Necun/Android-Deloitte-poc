@@ -119,7 +119,7 @@ class ImageViewer : AppCompatActivity() {
 
       val stream = contentResolver.openOutputStream(uri) ?: throw IOException("Could not open output stream")
 
-      result.compress(Bitmap.CompressFormat.JPEG, 95, stream)
+      result.compress(Bitmap.CompressFormat.JPEG, 50, stream)
       stream.close()
 
       if(pictureType == "book") {
