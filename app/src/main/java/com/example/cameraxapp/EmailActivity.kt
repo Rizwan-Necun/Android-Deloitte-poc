@@ -80,7 +80,7 @@ class EmailActivity : AppCompatActivity() {
         startActivity(intent)
 
         // Optional: if you want to finish the current activity
-        finish()
+        finishAffinity()
     }
 
     fun deleteInternalStorageDirectoryy() {
@@ -169,8 +169,8 @@ class EmailActivity : AppCompatActivity() {
         val listCall: Call<UploadResponse> = retrofit.sendEmail(
             part,
             userEmailId.toString(),
-            "this is test",
-            "hello please check your image"
+            "Your Document is ready",
+            "[PFA] Please find attached"
         )
 
         listCall.enqueue(object : Callback<UploadResponse> {
